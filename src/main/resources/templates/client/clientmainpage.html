@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta charset="ISO-8859-1">
+    <title>Buy Smart Product Page</title>
+</head>
+<body>
+
+<div class="container">
+    <div>
+        <a class="navbar-brand" href="/buysmart/product/productmainpage">Products Main Page</a>
+        <a class="navbar-brand" href="/buysmart/shop/shopmainpage">Store Main Page</a>
+        <a sec:authorize="isAuthenticated()"><a class="navbar-brand" th:href="@{/buysmart/logout}">Logout</a></a>
+
+    </div>
+</div>
+
+<div align="center">
+    <h1>Client Manager</h1>
+    <a href="/buysmart/client/new">Add Client</a>
+    <br/><br/>
+    <table class="table table-sm">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Cell Number</th>
+            <th>E-Mail</th>
+            <th>Street Name</th>
+            <th>Street Number</th>
+            <th>Complex Name</th>
+            <th>Complex Number</th>
+            <th>City Name</th>
+            <th>City Code</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="client : ${listClients}">
+            <td th:text="${client.id}">Id</td>
+            <td th:text="${client.clientName}">Name</td>
+            <td th:text="${client.clientSurname}">Surname</td>
+            <td th:text="${client.clientContactDetails.clientCellNumber}">Cell Number</td>
+            <td th:text="${client.clientContactDetails.clientEMail}">E-Mail</td>
+            <td th:text="${client.clientAddress.clientStreetName}">Street Name</td>
+            <td th:text="${client.clientAddress.clientStreetNumber}">Street Number</td>
+            <td th:text="${client.clientAddress.clientComplexName}">Complex Name</td>
+            <td th:text="${client.clientAddress.clientComplexNumber}">Complex Number</td>
+            <td th:text="${client.clientAddress.clientCityName}">City Name</td>
+            <td th:text="${client.clientAddress.clientCityCode}">City Code</td>
+            <td>
+                <a th:href="@{'/buysmart/client/edit/' + ${client.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/buysmart/client/delete/' + ${client.id}}">Delete</a>
+            </td>
+
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

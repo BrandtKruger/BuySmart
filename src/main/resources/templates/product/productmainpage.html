@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta charset="ISO-8859-1">
+    <title>Buy Smart Product Page</title>
+</head>
+<body>
+
+<div class="container">
+    <div>
+        <a class="navbar-brand" href="/buysmart/client/clientmainpage">Clients Main Page</a>
+        <a class="navbar-brand" href="/buysmart/shop/shopmainpage">Store Main Page</a>
+        <a sec:authorize="isAuthenticated()"><a class="navbar-brand" th:href="@{/buysmart/logout}">Logout</a></a>
+
+    </div>
+</div>
+
+<div align="center">
+    <h1>Product Manager</h1>
+    <a href="/buysmart/product/new">Add Product</a>
+    <br/><br/>
+    <table class="table table-sm">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Code</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Store Id</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="product : ${listProducts}">
+            <td th:text="${product.productId}">Id</td>
+            <td th:text="${product.productCode}">Code</td>
+            <td th:text="${product.productDescription}">Description</td>
+            <td th:text="${product.productQuantity}">Quantity</td>
+            <td th:text="${product.productPrice}">Price</td>
+            <td th:text="${product.shopId}">Store Id</td>
+            <td>
+                <a th:href="@{'/buysmart/product/edit/' + ${product.productId}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/buysmart/product/delete/' + ${product.productId}}">Delete</a>
+            </td>
+
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

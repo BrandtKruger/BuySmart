@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<meta charset="ISO-8859-1">
+<title>Add Product</title>
+</head>
+<body>
+	<div align="center">
+		<h1>Add New Product</h1>
+		<br/>
+		<form action="#" th:action="@{/buysmart/product/save}" th:object="${product}" method="post">
+			<table class="table table-sm">
+				<tr>
+					<td>Product Code:</td>
+					<td><input type="text" th:field="*{productCode}"></td>
+				</tr>
+				<tr>
+					<td>Product Description:</td>
+					<td><input type="text" th:field="*{productDescription}"></td>
+				</tr>
+				<tr>
+					<td>Product Quantity:</td>
+					<td><input type="text" th:field="*{productQuantity}"></td>
+				</tr>
+				<tr>
+					<td>Product Price:</td>
+					<td><input type="text" th:field="*{productPrice}"></td>
+				</tr>
+				<tr>
+					<td>Shop Id:</td>
+					<td><input type="text" th:field="*{shopId}"></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button type="submit">Save</button></td>
+				</tr>
+			
+			</table>
+		
+		</form>
+	
+	<div align="center" id="navbar" class="collapse navbar-collapse">
+	    <ul class="nav navbar-nav">
+	        <li sec:authorize="isAuthenticated()"><a th:href="@{/buysmart/logout}">Logout</a></li>
+	    </ul>
+    </div>
+	</div>
+	
+</body>
+</html>

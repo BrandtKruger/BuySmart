@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<meta charset="ISO-8859-1">
+<title>Add Shop</title>
+</head>
+<body>
+	<div align="center">
+		<h1>Add New Shop</h1>
+		<br/>
+		<form action="#" th:action="@{/buysmart/shop/save}" th:object="${shop}" method="post">
+			<table class="table table-sm">
+				<tr>
+					<td>Shop Name:</td>
+					<td><input type="text" th:field="*{shopName}"></td>
+				</tr>
+				<tr>
+					<td>Phone Number:</td>
+					<td><input type="text" th:field="*{shopContactDetails.shopPhoneNumber}"></td>
+				</tr>
+				<tr>
+					<td>E-Mail:</td>
+					<td><input type="text" th:field="*{shopContactDetails.shopEMail}"></td>
+				</tr>
+				<tr>
+					<td>Street Number:</td>
+					<td><input type="text" th:field="*{shopAddress.shopStreetNumber}"></td>
+				</tr>
+				<tr>
+					<td>Street Name:</td>
+					<td><input type="text" th:field="*{shopAddress.shopStreetName}"></td>
+				</tr>
+				<tr>
+					<td>Centre Name:</td>
+					<td><input type="text" th:field="*{shopAddress.shopShoppingCentreName}"></td>
+				</tr>
+
+				<tr>
+					<td>Shop Number:</td>
+					<td><input type="text" th:field="*{shopAddress.shopNumber}"></td>
+				</tr>
+				<tr>
+					<td>City Name:</td>
+					<td><input type="text" th:field="*{shopAddress.shopCityName}"></td>
+				</tr>
+				<tr>
+					<td>City Code:</td>
+					<td><input type="text" th:field="*{shopAddress.shopCityCode}"></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button type="submit">Save</button></td>
+				</tr>
+			
+			</table>
+		
+		</form>
+	
+	<div align="center" id="navbar" class="collapse navbar-collapse">
+	    <ul class="nav navbar-nav">
+	        <li sec:authorize="isAuthenticated()"><a th:href="@{/buysmart/logout}">Logout</a></li>
+	    </ul>
+    </div>
+	</div>
+	
+</body>
+</html>
